@@ -1,0 +1,15 @@
+Nikhil.CAS05@race.reva.edu.in
+
+<powershell>
+ 
+Install-WindowsFeature -Name Web-Server -IncludeManagementTools
+ 
+$hostname = hostname
+ 
+Set-Content -Path "C:\inetpub\wwwroot\index.html" `
+-Value "<h1>Hello World from $hostname</h1>"
+ 
+</powershell>
+
+
+Vusa5632

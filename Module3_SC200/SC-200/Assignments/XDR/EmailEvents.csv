@@ -1,0 +1,13 @@
+Timestamp,NetworkMessageId,SenderFromAddress,SenderDisplayName,RecipientEmailAddress,Subject,AttachmentCount,UrlCount,DeliveryAction,ThreatTypes,DetectionMethods
+2026-07-20T09:14:22Z,a1f2e3d4-0001,it-support@contoso-support-portal.net,"IT Support Desk",jsmith@contosomfg.com,"Action Required: Invoice #8832 Past Due",1,0,Delivered,,None
+2026-07-20T08:02:11Z,b2c3d4e5-0002,newsletter@shipping-partner.com,"Global Freight Partners",jsmith@contosomfg.com,"Your July Shipping Summary",0,1,Delivered,,None
+2026-07-20T08:15:47Z,c3d4e5f6-0003,payroll@contosomfg.com,"Contoso Payroll",kwilliams@contosomfg.com,"Pay Stub Available",1,0,Delivered,,None
+2026-07-20T08:30:02Z,d4e5f6a7-0004,noreply@calendly.com,"Calendly",tnguyen@contosomfg.com,"Meeting Confirmed: Vendor Sync",0,1,Delivered,,None
+2026-07-20T08:41:19Z,e5f6a7b8-0005,r.diaz@contosomfg.com,"Rosa Diaz",jsmith@contosomfg.com,"Q3 Sales Numbers - Draft",1,0,Delivered,,None
+2026-07-20T08:55:36Z,f6a7b8c9-0006,security-alerts@microsoft.com,"Microsoft account team",svc-backup@contosomfg.com,"Unusual sign-in activity",0,1,Delivered,,None
+2026-07-19T14:22:10Z,a7b8c9d0-0007,it-support@contoso-support-portal.net,"IT Support Desk",tnguyen@contosomfg.com,"Password Expiration Notice",0,1,Junked,Phish,Spoof intra-org spoofing
+2026-07-18T11:05:44Z,b8c9d0e1-0008,marketing@officesupplyco.com,"Office Supply Co",kwilliams@contosomfg.com,"20% Off Your Next Order",0,1,Delivered,,None
+2026-07-20T09:31:55Z,c9d0e1f2-0009,jsmith@contosomfg.com,"Jordan Smith",r.diaz@contosomfg.com,"RE: Q3 Sales Numbers - Draft",0,0,Delivered,,None
+2026-07-20T10:02:14Z,d0e1f2a3-0010,it-support@contoso-support-portal.net,"IT Support Desk",kwilliams@contosomfg.com,"Action Required: Invoice #8845 Past Due",1,0,Junked,Phish,File detonation
+2026-07-20T07:45:09Z,e1f2a3b4-0011,ceo@contosomfg.com,"Alex Turner (CEO)",all-staff@contosomfg.com,"Town Hall Reminder - Friday 10am",0,0,Delivered,,None
+2026-07-20T09:12:03Z,f2a3b4c5-0012,notifications@docusign.net,"DocuSign",tnguyen@contosomfg.com,"Please Sign: Vendor Agreement",0,1,Delivered,,None

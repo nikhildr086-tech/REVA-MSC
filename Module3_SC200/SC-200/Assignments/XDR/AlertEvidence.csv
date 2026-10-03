@@ -1,0 +1,13 @@
+AlertId,Timestamp,EntityType,EvidenceRole,FileName,SHA256,DeviceName,AccountName,RemoteIP,Url
+da3f1a20-e002,2026-07-20T09:14:22Z,Mailbox,Impacted,,,,jsmith@contosomfg.com,,
+da3f1a20-e002,2026-07-20T09:14:22Z,File,AttachedFile,Invoice_8832.xlsm,7a9f0c1e2b3d4a5f6e7d8c9b0a1f2e3d4c5b6a7f,,,,
+da3f1a20-e001,2026-07-20T09:23:48Z,Process,AttackerTechnique,powershell.exe,5b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c,DESKTOP-JS01,jsmith,,
+da3f1a20-e001,2026-07-20T09:23:48Z,Ip,AttackerC2,,,,,185.220.101.47,
+da3f1a20-e001,2026-07-20T09:23:48Z,Url,AttackerInfra,,,,,,http://185.220.101.47/s/update.ps1
+da3f1a20-e003,2026-07-20T10:47:02Z,Process,AttackerTechnique,rundll32.exe,7d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e,DESKTOP-JS01,jsmith,,
+da3f1a20-e004,2026-07-20T11:03:41Z,User,CompromisedAccount,,,,svc-backup,,
+da3f1a20-e004,2026-07-20T11:10:18Z,Device,LateralMovementTarget,,,FIN-SERVER01,svc-backup,,
+da3f1a20-e005,2026-07-21T02:14:07Z,User,CompromisedAccount,,,,svc-backup,193.29.107.22,
+da3f1a20-e006,2026-07-21T02:30:11Z,File,ExfiltratedData,Q3_Financials.xlsx,,,svc-backup,193.29.107.22,
+da3f1a20-e006,2026-07-21T02:32:47Z,File,ExfiltratedData,Payroll_Master.xlsx,,,svc-backup,193.29.107.22,
+da3f1a20-e007,2026-07-21T03:05:19Z,Url,ExfiltrationDestination,,,,svc-backup,193.29.107.22,https://filetransfer-secure.net/upload

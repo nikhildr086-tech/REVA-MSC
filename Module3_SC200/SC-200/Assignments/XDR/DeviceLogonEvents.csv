@@ -1,0 +1,10 @@
+Timestamp,DeviceName,DeviceId,ActionType,AccountName,AccountDomain,LogonType,RemoteIP,IsLocalAdmin
+2026-07-20T08:00:02Z,DESKTOP-JS01,dev-js01-001,LogonSuccess,jsmith,CONTOSOMFG,Interactive,,false
+2026-07-20T08:00:05Z,DESKTOP-KW02,dev-kw02-004,LogonSuccess,kwilliams,CONTOSOMFG,Interactive,,false
+2026-07-20T08:01:00Z,DESKTOP-TN04,dev-tn04-003,LogonSuccess,tnguyen,CONTOSOMFG,Interactive,,false
+2026-07-20T10:59:47Z,FIN-SERVER01,dev-fin01-002,LogonSuccess,svc-backup,CONTOSOMFG,Network,10.0.2.14,true
+2026-07-20T11:03:41Z,FIN-SERVER01,dev-fin01-002,LogonSuccess,svc-backup,CONTOSOMFG,Network,10.0.2.14,true
+2026-07-20T11:10:22Z,FIN-SERVER01,dev-fin01-002,LogonSuccess,svc-backup,CONTOSOMFG,RemoteInteractive,10.0.2.14,true
+2026-07-20T09:00:00Z,DESKTOP-JS01,dev-js01-001,LogonSuccess,jsmith,CONTOSOMFG,Unlock,,false
+2026-07-20T13:15:00Z,FIN-SERVER01,dev-fin01-002,LogonSuccess,fin-admin,CONTOSOMFG,Interactive,,true
+2026-07-19T08:00:03Z,DESKTOP-JS01,dev-js01-001,LogonSuccess,jsmith,CONTOSOMFG,Interactive,,false

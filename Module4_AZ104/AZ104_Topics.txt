@@ -1,0 +1,52 @@
+The **AZ-104: Microsoft Azure Administrator** exam is designed to measure your ability to manage, implement, and monitor an organization's identity, governance, storage, compute, and virtual networks in a cloud environment.
+
+Here is a breakdown of the core subject areas covered in the exam, categorized by their approximate weight in the test:
+
+### 1. Manage Azure Identities and Governance (15–20%)
+
+This section focuses on who has access to your cloud resources and how you manage permissions and compliance.
+
+* **Azure Active Directory (Azure AD / Entra ID):** Managing users, groups, and administrative units.
+* **Access Control:** Implementing Role-Based Access Control (RBAC) and interpreting permissions.
+* **Governance:** Configuring Azure policies, resource locks, and managing multiple subscriptions.
+
+### 2. Implement and Manage Storage (15–20%)
+
+You will need to know how data is stored, secured, and shared across Azure.
+
+* **Storage Accounts:** Creating, configuring, and securing Azure storage accounts (including network access and access keys).
+* **Data Management:** Configuring Azure Blob storage, Azure Files, and file shares.
+* **Tools:** Utilizing tools like Azure Storage Explorer and AzCopy for data transfer.
+
+### 3. Deploy and Manage Azure Compute Resources (20–25%)
+
+This is a heavy section focusing on the infrastructure that runs applications.
+
+* **Virtual Machines (VMs):** Planning, creating, and configuring Windows and Linux VMs.
+* **Scalability:** Configuring VM sizes, availability sets, and Virtual Machine Scale Sets (VMSS).
+* **Containers & Web Apps:** Deploying and configuring Azure App Services, Azure Container Instances (ACI), and Azure Kubernetes Service (AKS).
+
+### 4. Configure and Manage Virtual Networking (20–25%)
+
+This is often considered the most challenging part of the exam. It covers how resources talk to each other and the outside world.
+
+* **Virtual Networks (VNets):** Implementing and managing VNets, subnets, and IP addressing.
+* **Connectivity:** Setting up VNet peering, VPN Gateways, and Azure ExpressRoute.
+* **Traffic Management:** Configuring Azure Load Balancers, Azure Application Gateways, and Network Security Groups (NSGs).
+
+### 5. Monitor and Back Up Azure Resources (10–15%)
+
+Ensuring things run smoothly and can be recovered if something goes wrong.
+
+* **Monitoring:** Using Azure Monitor, setting up alerts, and analyzing metrics and logs (Log Analytics workspaces).
+* **Backup & Recovery:** Configuring Azure Backup for VMs and files, and implementing Azure Site Recovery (ASR) for disaster recovery.
+
+---
+
+### Key Exam Details
+
+* **Format:** 40–60 questions (Multiple choice, case studies, and drag-and-drop).
+* **Passing Score:** 700 out of 1000.
+* **Prerequisites:** While there are no official prerequisites, Microsoft recommends having at least six months of hands-on experience administering Azure before taking it.
+
+Are you planning to take this exam soon, or are you just trying to see if it aligns with your current job role?

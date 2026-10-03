@@ -1,0 +1,22 @@
+sudo systemctl enable apache2
+sudo systemctl start apache2
+
+az vm stop --resource-group nikhiltestJun11 --name MangmtVM -f
+
+
+Stop-AzVM -ResourceGroupName nikhiltestJun11 -Name MangmtVM -Force
+
+
+PS /home/nikhil> Stop-AzVM -ResourceGroupName nikhiltestJun11 -Name MangmtVM -Force
+ 
+OperationId : cc28d7fd-9f1c-411d-a2a2-f442f64e89d7
+Status      : Succeeded
+StartTime   : 7/11/2026 10:11:35 AM
+EndTime     : 7/11/2026 10:11:47 AM
+Error       :
+
+ az vm stop --resource-group NIKHIL_RG01 --name Nikhil-WebVM --subscription -force   
+ 
+Stop-AzVM -ResourceGroupName NIKHIL_RG01 -Name Nikhil-WebVM -Force
+
+Stop-AzVM -ResourceGroupName NIKHIL_RG01 -Name Nikhil-DevVM -Force

@@ -1,0 +1,51 @@
+employee_id,first_name,last_name,email,department,job_title,hire_date,salary_usd,ssn,bank_account_number,manager_id,performance_rating
+EMP0001,Jessica,King,johnsonchristopher@douglas.com,Customer Support,Communications engineer,2021-05-05,90349,089-78-2129,GB75MVYU92124471746542,,Exceeds
+EMP0002,Joshua,Brown,dcook@sosa-baker.info,Marketing,Building control surveyor,2024-09-27,132975,504-26-6433,GB72FUPD28639174101194,,Outstanding
+EMP0003,Andrew,Jimenez,fitzpatrickelizabeth@hernandez-rivera.biz,Sales,"Teacher, special educational needs",2024-09-17,77325,004-66-8040,GB08PNMX18306719855460,,Below
+EMP0004,Susan,Davis,christopher74@harris.com,Customer Support,Hydrographic surveyor,2023-07-26,128612,713-50-1750,GB28UWLP17320309376184,,Meets
+EMP0005,Tammie,Cain,johnsonbrian@williams.net,Sales,Proofreader,2022-07-08,111143,695-69-2441,GB07XSHC02707903202041,,Exceeds
+EMP0006,George,Garza,wilsonbrooke@walker.biz,Sales,"Journalist, broadcasting",2022-03-04,175399,124-88-9437,GB96REKZ30925114262582,,Exceeds
+EMP0007,Sara,Williams,moodycrystal@strickland-smith.info,Customer Support,Catering manager,2022-01-12,80967,007-01-2940,GB18CWUS46723248763290,,Meets
+EMP0008,Jennifer,Salazar,burtonkimberly@barnes-grant.com,Operations,Commercial/residential surveyor,2023-04-13,172592,543-13-5930,GB08YRQH73403127722005,,Meets
+EMP0009,Ryan,Cook,vwilliams@buckley.com,Finance,Air cabin crew,2020-10-25,158923,497-66-1902,GB72CHXO99563531531363,,Meets
+EMP0010,Jeffrey,Ruiz,bbrown@robinson.info,Marketing,"Editor, magazine features",2021-07-14,100730,397-48-2235,GB48OXGU54352090421776,,Below
+EMP0011,Matthew,Tanner,kristinelittle@whitehead.com,Human Resources,Chartered legal executive (England and Wales),2019-12-01,145889,422-67-8016,GB65GSPO40633569392906,EMP0008,Outstanding
+EMP0012,Billy,Ruiz,simmonsphillip@nicholson.net,Sales,"Administrator, charities/voluntary organisations",2026-04-27,112986,710-94-6663,GB92GELJ31074279907726,EMP0004,Exceeds
+EMP0013,Monica,Sims,daltonchad@cook.com,Finance,Video editor,2020-01-09,53514,556-74-3394,GB29ZVCT50850165790552,EMP0010,Meets
+EMP0014,Janet,Castro,devonrogers@wilson.org,Marketing,"Engineer, manufacturing systems",2023-09-10,105728,772-96-3694,GB10KLIQ64015577881788,EMP0001,Exceeds
+EMP0015,Shannon,Richardson,lopeznicole@miller.com,Operations,Camera operator,2025-09-06,63433,112-22-4522,GB27DWEP23804682756704,EMP0004,Exceeds
+EMP0016,Andrew,Pham,robert55@watkins-terry.net,Sales,"Producer, television/film/video",2020-01-21,134619,469-39-9294,GB56EZJF43754025472928,EMP0002,Meets
+EMP0017,Teresa,Franco,evanwilson@andrews-alexander.com,Finance,Educational psychologist,2020-10-25,175248,211-72-0569,GB23VKLE57828410672752,EMP0004,Meets
+EMP0018,Joanna,Cantrell,deborah47@montes-webster.org,Operations,Data processing manager,2018-08-05,171907,819-73-7244,GB21KWDX70281406937515,EMP0004,Outstanding
+EMP0019,Danielle,Silva,kimberlywang@johnson.info,Customer Support,Chartered loss adjuster,2018-12-30,154708,525-51-3186,GB29PKTT80562656504554,EMP0004,Exceeds
+EMP0020,Nancy,Miller,afigueroa@roberts-shaffer.biz,Sales,Patent examiner,2026-04-19,160997,143-76-9797,GB98CEGJ78519610646287,EMP0006,Outstanding
+EMP0021,Karina,Taylor,marisaroberts@williams-mckenzie.org,Human Resources,Industrial buyer,2024-03-08,170427,506-72-7594,GB98HAZA24471462730147,EMP0001,Exceeds
+EMP0022,Carl,Reese,qcunningham@jennings.com,Sales,Science writer,2026-06-07,153544,751-74-0288,GB60IFSB25725204565044,EMP0006,Exceeds
+EMP0023,Sharon,Palmer,kathygeorge@stephens.com,Engineering,Geoscientist,2022-10-02,98224,702-90-5940,GB20DRSL20284576521328,EMP0004,Outstanding
+EMP0024,Jacob,Prince,butlersabrina@fuentes.info,Engineering,Magazine features editor,2020-04-23,158593,320-89-5941,GB16EOTQ52401322342321,EMP0003,Below
+EMP0025,Kathryn,Rodriguez,hamptonkatherine@gonzalez.net,Human Resources,"Therapist, horticultural",2021-12-03,113485,061-61-1949,GB73IBCJ01193932501249,EMP0002,Outstanding
+EMP0026,Ethan,Mason,williamjones@hines.com,Customer Support,Dramatherapist,2021-04-24,73666,773-69-0071,GB49XDGQ75927125663836,EMP0001,Exceeds
+EMP0027,Tracey,Martinez,stonetyler@bush-hawkins.com,Sales,Charity fundraiser,2019-06-15,109965,336-64-1896,GB62MJOT47386463175207,EMP0003,Outstanding
+EMP0028,Randy,Mills,wilsonralph@garza.com,Human Resources,Bookseller,2023-11-18,174185,373-26-5549,GB38GTMD36749946579678,EMP0004,Outstanding
+EMP0029,Katrina,Rodriguez,tracy32@garcia.com,Sales,Research scientist (physical sciences),2020-10-07,91158,695-04-2935,GB68MTVK24991187734778,EMP0007,Exceeds
+EMP0030,Matthew,Heath,cisnerosanthony@beard-wilson.info,Human Resources,International aid/development worker,2020-08-18,117521,874-49-7251,GB59OBBF84276246719788,EMP0008,Below
+EMP0031,Thomas,Dickerson,myerstroy@jensen-gomez.com,Human Resources,IT sales professional,2023-02-02,175577,063-04-9675,GB62BELL90561655650333,EMP0003,Meets
+EMP0032,Brittany,Lozano,meltondanny@smith.com,Finance,Psychiatrist,2023-09-10,105068,674-55-9307,GB04QNIA79056965917135,EMP0001,Exceeds
+EMP0033,Lisa,Contreras,christinacox@harris-reid.com,Operations,Social worker,2022-06-29,130209,220-37-4345,GB27BJSM39191954198763,EMP0001,Exceeds
+EMP0034,Chase,Colon,ryan85@perry.org,Marketing,"Scientist, biomedical",2021-04-23,172987,465-86-8972,GB87FAUW82973748969083,EMP0009,Meets
+EMP0035,Dylan,Hernandez,megan65@walters.com,Sales,Historic buildings inspector/conservation officer,2021-06-11,181124,662-21-4202,GB54VTHM31230347786603,EMP0002,Meets
+EMP0036,Derek,Green,donna20@tucker.com,Sales,Interior and spatial designer,2019-10-27,65815,617-39-1042,GB87NLVV16231981898471,EMP0004,Outstanding
+EMP0037,David,Roman,marisa63@robinson-rodriguez.com,Sales,Haematologist,2020-06-11,112543,451-53-4167,GB56SBPR51586734257540,EMP0010,Exceeds
+EMP0038,Rebecca,Johnson,vazquezkristina@king.com,Marketing,Medical laboratory scientific officer,2023-09-02,69491,832-88-2000,GB25RHOM06441343275604,EMP0007,Below
+EMP0039,Madeline,Shepard,vmclaughlin@henderson.com,Finance,Games developer,2025-06-02,101545,519-09-5765,GB48NTXR57002720634591,EMP0006,Meets
+EMP0040,John,Reeves,melaniejennings@hayes-russo.com,Finance,Gaffer,2019-06-09,151752,178-88-9717,GB90KZJG16526693008931,EMP0003,Below
+EMP0041,James,Haynes,brandonwilliamson@green.org,Human Resources,Commercial/residential surveyor,2026-04-10,130883,015-92-8616,GB17NYOV71333447626393,EMP0002,Exceeds
+EMP0042,Justin,Byrd,ywhite@johnson.com,Human Resources,Waste management officer,2026-06-10,74209,462-32-6057,GB02SVUO10725636694118,EMP0002,Meets
+EMP0043,Marvin,Young,wendy90@king.biz,Marketing,Immigration officer,2019-01-09,117520,405-86-6077,GB82ERBS24287572158624,EMP0003,Below
+EMP0044,Bradley,Anderson,julie64@austin-juarez.com,Sales,"Scientist, forensic",2019-06-26,112037,321-56-2704,GB36KXPY28703203207427,EMP0006,Below
+EMP0045,Wanda,Ho,alexandervanessa@washington.com,Engineering,Community pharmacist,2022-01-06,162867,358-12-3338,GB31JFFX84993908926137,EMP0009,Below
+EMP0046,Paige,Johnson,longbrittany@hood.com,Marketing,Ceramics designer,2023-12-02,50050,472-91-7862,GB10OUIT05097592304501,EMP0009,Below
+EMP0047,Carrie,Davis,gregory61@phelps.biz,Operations,Operational researcher,2022-11-22,75154,292-83-2526,GB50DJPZ64925158377674,EMP0003,Below
+EMP0048,Rodney,Avila,christina66@williams.info,Sales,Environmental manager,2023-01-07,76058,664-88-2541,GB96PQUU81476174224386,EMP0009,Meets
+EMP0049,Brandon,Jones,palmerwilliam@davis-guerrero.org,Finance,Forensic scientist,2020-11-24,121860,364-33-9594,GB41CYQA17226016459779,EMP0010,Meets
+EMP0050,Matthew,Hull,jasonmiller@green.com,Operations,"Accountant, chartered public finance",2024-12-15,137884,405-15-0218,GB20FUPO69749956412203,EMP0004,Below

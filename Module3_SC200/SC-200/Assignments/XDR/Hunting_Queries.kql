@@ -1,0 +1,137 @@
+// ============================================================================
+// CAPSTONE THREAT HUNTING QUERY PACK
+// Contoso Manufacturing Incident (INC-4471)
+// ----------------------------------------------------------------------------
+// These queries assume the sample CSVs have been ingested into tables with
+// the SAME NAMES as the files (EmailEvents, DeviceProcessEvents, etc.).
+//
+// - If you are using a Log Analytics workspace with Custom Logs (MMA/DCR),
+//   your table names will have a "_CL" suffix and column names will have
+//   a ".s" / ".t" / ".d" type suffix (e.g. DeviceName_s). Adjust accordingly,
+//   or use the "project-rename" pattern shown at the bottom of this file.
+// - If you are working in a real Microsoft Defender XDR tenant's Advanced
+//   Hunting blade, these queries run largely as-is against the real schema
+//   (minus the project-rename block, which is only needed for custom logs).
+// ============================================================================
+
+
+// ---------------------------------------------------------------------------
+// PHASE 1 - INITIAL ACCESS: Find the phishing email and malicious attachment
+// ---------------------------------------------------------------------------
+EmailEvents
+| where ThreatTypes has "Phish" or SenderFromAddress has "contoso-support-portal"
+| project Timestamp, SenderFromAddress, RecipientEmailAddress, Subject, DeliveryAction, ThreatTypes
+
+EmailAttachmentInfo
+| where MalwareFilterVerdict == "Malicious" or FileName endswith ".xlsm"
+| project Timestamp, SenderFromAddress, RecipientEmailAddress, FileName, SHA256, MalwareFilterVerdict
+
+
+// ---------------------------------------------------------------------------
+// PHASE 2 - EXECUTION: Office spawning PowerShell (classic macro-dropper chain)
+// ---------------------------------------------------------------------------
+DeviceProcessEvents
+| where InitiatingProcessFileName in~ ("EXCEL.EXE","WINWORD.EXE","POWERPNT.EXE")
+| where FileName =~ "powershell.exe"
+| project Timestamp, DeviceName, InitiatingProcessAccountName, InitiatingProcessFileName, FileName, ProcessCommandLine
+
+
+// ---------------------------------------------------------------------------
+// PHASE 3 - COMMAND & CONTROL: Encoded / hidden-window PowerShell + beaconing
+// ---------------------------------------------------------------------------
+DeviceProcessEvents
+| where FileName =~ "powershell.exe"
+| where ProcessCommandLine has_any ("-enc", "-e ", "-EncodedCommand", "-w hidden", "-nop")
+| project Timestamp, DeviceName, InitiatingProcessAccountName, ProcessCommandLine
+
+DeviceNetworkEvents
+| where RemoteIP == "185.220.101.47" or RemoteUrl has "185.220.101.47"
+| summarize ConnectionCount = count(), FirstSeen = min(Timestamp), LastSeen = max(Timestamp)
+    by DeviceName, RemoteIP, InitiatingProcessFileName
+
+
+// ---------------------------------------------------------------------------
+// PHASE 4 - PERSISTENCE: Scheduled task and Run-key creation
+// ---------------------------------------------------------------------------
+DeviceProcessEvents
+| where (FileName =~ "schtasks.exe" and ProcessCommandLine has "/create")
+     or (FileName =~ "reg.exe" and ProcessCommandLine has @"CurrentVersion\Run")
+| project Timestamp, DeviceName, InitiatingProcessAccountName, FileName, ProcessCommandLine
+
+
+// ---------------------------------------------------------------------------
+// PHASE 5 - CREDENTIAL ACCESS: LSASS memory dump via rundll32/comsvcs.dll
+// ---------------------------------------------------------------------------
+DeviceProcessEvents
+| where FileName =~ "rundll32.exe"
+| where ProcessCommandLine has "comsvcs.dll" and ProcessCommandLine has "MiniDump"
+| project Timestamp, DeviceName, InitiatingProcessAccountName, ProcessCommandLine
+
+
+// ---------------------------------------------------------------------------
+// PHASE 6 - LATERAL MOVEMENT: Same account, new device, short time window
+// ---------------------------------------------------------------------------
+DeviceLogonEvents
+| where AccountName == "svc-backup"
+| summarize Devices = make_set(DeviceName), LogonTypes = make_set(LogonType), FirstLogon = min(Timestamp)
+    by AccountName
+| extend DeviceCount = array_length(Devices)
+| where DeviceCount > 1
+
+
+// ---------------------------------------------------------------------------
+// PHASE 7 - IMPOSSIBLE TRAVEL / IDENTITY RISK
+// ---------------------------------------------------------------------------
+IdentityLogonEvents
+| where AccountUpn == "svc-backup@contosomfg.com"
+| sort by Timestamp asc
+| project Timestamp, AccountUpn, ApplicationName, IPAddress, City, Country, RiskLevel
+// Look for a US-based device logon (DeviceLogonEvents) immediately followed by
+// a foreign cloud sign-in for the same identity within a short window -- that
+// travel is physically impossible and is a strong compromise indicator.
+
+
+// ---------------------------------------------------------------------------
+// PHASE 8 - EXFILTRATION: Mass download + upload to unsanctioned storage
+// ---------------------------------------------------------------------------
+CloudAppEvents
+| where ActionType in ("FileDownloaded","MassDownload") and AccountDisplayName == "svc-backup"
+| project Timestamp, ActionType, ObjectName, IPAddress, CountryCode
+
+CloudAppEvents
+| where ApplicationName == "Unsanctioned Cloud Storage"
+| project Timestamp, AccountDisplayName, ObjectName, IPAddress, CountryCode
+
+
+// ---------------------------------------------------------------------------
+// PHASE 9 - INCIDENT CORRELATION: Tie every alert back to one incident story
+// ---------------------------------------------------------------------------
+AlertInfo
+| where IncidentId == "INC-4471"
+| sort by Timestamp asc
+| project Timestamp, Title, Severity, Category, ServiceSource
+
+AlertEvidence
+| where AlertId in (toscalar(AlertInfo | where IncidentId == "INC-4471" | summarize make_set(AlertId)))
+| project AlertId, Timestamp, EntityType, EvidenceRole, DeviceName, AccountName, RemoteIP, Url, FileName
+
+
+// ---------------------------------------------------------------------------
+// BONUS - Full attack chain timeline in a single view (all tables unioned)
+// Students can extend this into their final report's timeline exhibit.
+// ---------------------------------------------------------------------------
+union
+    (DeviceProcessEvents | project Timestamp, Device=DeviceName, Actor=InitiatingProcessAccountName, Detail=ProcessCommandLine, EventType="Process"),
+    (DeviceNetworkEvents | project Timestamp, Device=DeviceName, Actor=InitiatingProcessAccountName, Detail=strcat(RemoteIP, " ", RemoteUrl), EventType="Network"),
+    (DeviceLogonEvents   | project Timestamp, Device=DeviceName, Actor=AccountName, Detail=strcat(LogonType, " from ", RemoteIP), EventType="Logon"),
+    (CloudAppEvents      | project Timestamp, Device=ApplicationName, Actor=AccountDisplayName, Detail=strcat(ActionType, " ", ObjectName), EventType="CloudApp")
+| sort by Timestamp asc
+
+
+// ---------------------------------------------------------------------------
+// REFERENCE - Column rename pattern if your custom-log table has _CL suffix
+// (uncomment and adapt if you ingested via Log Analytics Custom Logs)
+// ---------------------------------------------------------------------------
+// DeviceProcessEvents_CL
+// | project-rename Timestamp = TimeGenerated, DeviceName = DeviceName_s,
+//     ProcessCommandLine = ProcessCommandLine_s, InitiatingProcessAccountName = InitiatingProcessAccountName_s

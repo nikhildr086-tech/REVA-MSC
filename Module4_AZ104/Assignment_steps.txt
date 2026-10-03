@@ -1,0 +1,910 @@
+Task 1 – Create Resource Groups
+Create the following Resource Groups.
+Resource Group
+Purpose
+<NIKHIL>-RG01
+Production Resources
+<NIKHIL>-Network-RG
+Networking Resources
+Use any Azure region.
+
+
+To complete **Task 1 – Create Resource Groups**, create these two resource groups in any Azure region (for example, **Central India**, **East US**, or **West Europe**).
+
+| Resource Group Name     | Purpose              | Region (Example) |
+| ----------------------- | -------------------- | ---------------- |
+| **NIKHIL-RG01**       | Production Resources | Central India    |
+| **NIKHIL-NETWORK-RG** | Networking Resources | Central India    |
+
+### Steps in the Azure Portal
+
+1. Sign in to the Azure portal.
+2. In the search bar, type **Resource groups** and open it.
+3. Click **+ Create**.
+4. Select your **Subscription**.
+5. Enter the resource group name:
+
+   * **NIKHIL-RG01**
+6. Choose a **Region** (e.g., Central India).
+7. Click **Review + Create**, then **Create**.
+8. Repeat the process for:
+
+   * **NIKHIL-Network-RG**
+
+### Example
+
+If your name is **Nikhil**, the resource groups would be:
+
+* **Nikhil-RG01** – Production Resources
+* **Nikhil-Network-RG** – Networking Resources
+
+After creating them, you should see both resource groups listed in the Azure portal.
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Task 2 – Create a Virtual Network
+Create a Virtual Network.
+Setting
+Value
+Name
+<YourName>-VNET01
+Address Space
+10.10.0.0/16
+Create the following subnets.
+Subnet
+Address Prefix
+<YourName>-WebSubnet
+10.10.1.0/24
+<YourName>-AppSubnet
+10.10.2.0/24
+
+
+### Task 2 – Create a Virtual Network
+
+Create a Virtual Network with the following settings.
+
+| Setting           | Value               |
+| ----------------- | ------------------- |
+| **Name**          | **YourName-VNET01** |
+| **Address Space** | **10.10.0.0/16**    |
+
+Create these subnets:
+
+| Subnet Name            | Address Prefix   |
+| ---------------------- | ---------------- |
+| **YourName-WebSubnet** | **10.10.1.0/24** |
+| **YourName-AppSubnet** | **10.10.2.0/24** |
+
+### Example
+
+If your name is **Nikhil**, use:
+
+* **Virtual Network Name:** `NIKHIL-VNET01`
+* **Address Space:** `10.10.0.0/16`
+
+**Subnets:**
+
+* `NIKHIL-WEBSUBNET` → `10.10.1.0/24`
+* `NIKHIL-APPSUBNET` → `10.10.2.0/24`
+
+### Steps in the Azure Portal
+
+1. Sign in to the Azure portal.
+2. Search for **Virtual networks** and click **+ Create**.
+3. Select your **Subscription**.
+4. Choose the Resource Group created in Task 1 (e.g., **Nikhil-Network-RG**).
+5. Enter:
+
+   * **Virtual network name:** `Nikhil-VNET01`
+   * **Region:** Same region used for the resource group.
+6. Under the **IP Addresses** tab:
+
+   * Set the **Address space** to `10.10.0.0/16`.
+7. Remove the default subnet (if present) and create:
+
+   * **Subnet name:** `Nikhil-WebSubnet`
+
+     * **Address range:** `10.10.1.0/24`
+   * **Subnet name:** `Nikhil-AppSubnet`
+
+     * **Address range:** `10.10.2.0/24`
+8. Click **Review + Create**.
+9. Click **Create**.
+
+### Expected Result
+
+| Resource        | Value                               |
+| --------------- | ----------------------------------- |
+| Virtual Network | `Nikhil-VNET01`                     |
+| Address Space   | `10.10.0.0/16`                      |
+| Subnet 1        | `Nikhil-WebSubnet` (`10.10.1.0/24`) |
+| Subnet 2        | `Nikhil-AppSubnet` (`10.10.2.0/24`) |
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+### Task 3 – Create a Second Virtual Network
+
+Create a second Virtual Network with the following settings.
+
+| Setting           | Value                |
+| ----------------- | -------------------- |
+| **Name**          | **YourName-DevVNET** |
+| **Address Space** | **10.20.0.0/16**     |
+
+Create this subnet:
+
+| Subnet Name            | Address Prefix   |
+| ---------------------- | ---------------- |
+| **YourName-DevSubnet** | **10.20.1.0/24** |
+
+### Example
+
+If your name is **Nikhil**, use:
+
+* **Virtual Network Name:** `NIKHIL-DEVVNET`
+* **Address Space:** `10.20.0.0/16`
+
+**Subnet:**
+
+* `NIKHIL-DEVSUBNET` → `10.20.1.0/24`
+
+### Steps in the Azure Portal
+
+1. Sign in to the Azure portal.
+2. Search for **Virtual networks** and click **+ Create**.
+3. Select your **Subscription**.
+4. Choose the **Nikhil-Network-RG** resource group (or the networking resource group you created in Task 1).
+5. Enter:
+
+   * **Virtual network name:** `Nikhil-DevVNET`
+   * **Region:** Same region as your other VNet.
+6. On the **IP Addresses** tab:
+
+   * Set the **Address space** to `10.20.0.0/16`.
+7. Create one subnet:
+
+   * **Subnet name:** `Nikhil-DevSubnet`
+   * **Address range:** `10.20.1.0/24`
+8. Click **Review + Create**.
+9. Click **Create**.
+
+### Expected Result
+
+| Resource        | Value                               |
+| --------------- | ----------------------------------- |
+| Virtual Network | `Nikhil-DevVNET`                    |
+| Address Space   | `10.20.0.0/16`                      |
+| Subnet          | `Nikhil-DevSubnet` (`10.20.1.0/24`) |
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Task 4 – Configure VNet Peering ------------Pending
+
+Configure bidirectional peering between:
+    • <YourName>-VNET01
+    • <YourName>-DevVNET
+Verify that both VNets can communicate.
+
+### Task 4 – Configure VNet Peering
+
+Configure **bidirectional peering** between:
+
+* **Nikhil-VNET01**
+* **Nikhil-DevVNET**
+
+---
+
+### Steps in the Azure Portal
+
+#### Step 1: Create Peering from `Nikhil-VNET01` to `Nikhil-DevVNET`
+
+1. Open **Virtual networks**.
+2. Select **Nikhil-VNET01**.
+3. In the left menu, click **Peerings**.
+4. Click **+ Add**.
+5. Configure:
+
+   * **Peering link name (this VNet):** `VNET01-to-DevVNET`
+   * **Remote virtual network:** `Nikhil-DevVNET`
+   * **Peering link name (remote VNet):** `DevVNET-to-VNET01`
+6. Leave the default options enabled (such as **Allow virtual network access**).
+7. Click **Add**.
+
+> Azure creates the peering in both directions when you configure both local and remote peering names in the same wizard.
+
+---
+
+### Step 2: Verify the Peering
+
+1. Open **Nikhil-VNET01** → **Peerings**.
+2. Confirm the peering status is **Connected**.
+3. Open **Nikhil-DevVNET** → **Peerings**.
+4. Confirm its peering status is also **Connected**.
+
+---
+
+### Verify Communication
+
+To verify the VNets can communicate:
+
+1. Deploy one virtual machine in **Nikhil-WebSubnet** (`Nikhil-VNET01`).
+2. Deploy another virtual machine in **Nikhil-DevSubnet** (`Nikhil-DevVNET`).
+3. Ensure the Network Security Groups (NSGs) allow ICMP or use Azure's **Connection troubleshoot** feature.
+4. From one VM, ping the private IP address of the other VM, or test connectivity using:
+
+   * `Test-NetConnection <Private-IP>` (Windows PowerShell)
+   * `ping <Private-IP>` (if ICMP is allowed)
+   * Azure **Network Watcher → Connection troubleshoot**
+
+---
+
+### Expected Result
+
+| VNet             | Peered With      | Status        |
+| ---------------- | ---------------- | ------------- |
+| `Nikhil-VNET01`  | `Nikhil-DevVNET` | **Connected** |
+| `Nikhil-DevVNET` | `Nikhil-VNET01`  | **Connected** |
+
+Once both peerings show **Connected** and connectivity tests succeed, the task is complete.
+
+
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Task 5 – Deploy Virtual Machines
+Deploy two virtual machines.
+VM
+OS
+Network
+Public IP
+<YourName>-WebVM
+Windows Server 2022 or Ubuntu
+WebSubnet
+Yes
+<YourName>-DevVM
+Windows Server 2022 or Ubuntu
+DevSubnet
+Yes
+Requirements
+    • Standard SSD Disk
+    • Auto Shutdown Enabled
+
+
+
+
+## Task 5 – Deploy Virtual Machines
+
+Deploy the following two virtual machines.
+
+| VM Name          | OS                                | Virtual Network / Subnet              | Public IP |
+| ---------------- | --------------------------------- | ------------------------------------- | --------- |
+| **Nikhil-WebVM** | Windows Server 2022 **or** Ubuntu | **Nikhil-VNET01 → Nikhil-WebSubnet**  | **Yes**   |
+| **Nikhil-DevVM** | Windows Server 2022 **or** Ubuntu | **Nikhil-DevVNET → Nikhil-DevSubnet** | **Yes**   |
+
+### Additional Requirements
+
+* ✅ **Standard SSD** OS Disk
+* ✅ **Auto Shutdown** Enabled
+
+---
+
+## Step 1: Create `Nikhil-WebVM`
+
+1. In the Azure portal, search for **Virtual machines**.
+2. Click **+ Create** → **Azure virtual machine**.
+3. Configure:
+
+   * **Resource Group:** `Nikhil-RG01`
+   * **Virtual machine name:** `Nikhil-WebVM`
+   * **Region:** Same as your VNets
+   * **Image:** Windows Server 2022 **or** Ubuntu Server
+   * **Size:** Any eligible size (e.g., B1s/B2s if available)
+4. Under **Administrator account**, create a username and password.
+5. Under **Disks**:
+
+   * Select **Standard SSD**.
+6. Under **Networking**:
+
+   * **Virtual Network:** `Nikhil-VNET01`
+   * **Subnet:** `Nikhil-WebSubnet`
+   * **Public IP:** Create a new Public IP (**Enabled**)
+7. Under **Management**:
+
+   * Enable **Auto-shutdown**
+   * Set a shutdown time (for example, **7:00 PM** in your time zone).
+8. Click **Review + Create** → **Create**.
+
+---
+
+## Step 2: Create `Nikhil-DevVM`
+
+Repeat the same process with these changes:
+
+* **VM Name:** `Nikhil-DevVM`
+* **Virtual Network:** `Nikhil-DevVNET`
+* **Subnet:** `Nikhil-DevSubnet`
+* **Public IP:** Yes
+* **Disk:** Standard SSD
+* **Auto Shutdown:** Enabled
+
+---
+
+## Expected Configuration
+
+| Setting        | Web VM                        | Dev VM                        |
+| -------------- | ----------------------------- | ----------------------------- |
+| Resource Group | `Nikhil-RG01`                 | `Nikhil-RG01`                 |
+| VM Name        | `Nikhil-WebVM`                | `Nikhil-DevVM`                |
+| OS             | Windows Server 2022 or Ubuntu | Windows Server 2022 or Ubuntu |
+| Disk           | Standard SSD                  | Standard SSD                  |
+| VNet           | `Nikhil-VNET01`               | `Nikhil-DevVNET`              |
+| Subnet         | `Nikhil-WebSubnet`            | `Nikhil-DevSubnet`            |
+| Public IP      | Yes                           | Yes                           |
+| Auto Shutdown  | Enabled                       | Enabled                       |
+
+### Verification
+
+After deployment:
+
+* Both VMs should show **Status: Running**.
+* Each VM should have a **Public IP address**.
+* The OS disk type should be **Standard SSD**.
+* **Auto-shutdown** should be enabled under **Operations → Auto-shutdown**.
+
+
+
+IPS:
+
+Nikhil-WebVM
+
+
+Public IP address : 20.198.91.46
+Private IP address :10.10.1.4
+
+
+Nikhil-DevVM
+
+Public IP address 20.207.204.200
+
+Private IP address : 10.20.1.4
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+## Task 6 – Configure Network Security Groups (NSGs)
+
+Assuming your name is **Nikhil**.
+
+---
+
+# 1. Create Web NSG
+
+**Name:** `Nikhil-Web-NSG`
+
+Go to:
+
+**Azure Portal → Network Security Groups → + Create**
+
+* Resource Group: `NIKHIL_RG01` (or your Networking RG)
+* Name: `Nikhil-Web-NSG`
+* Region: Same as your VNet
+
+Click **Create**.
+
+---
+
+## Configure Inbound Rules
+
+Go to
+
+**Nikhil-Web-NSG → Inbound security rules → + Add**
+
+### Rule 1 – Allow HTTP
+
+| Setting     | Value      |
+| ----------- | ---------- |
+| Source      | Any        |
+| Source Port | *          |
+| Destination | Any        |
+| Service     | HTTP       |
+| Action      | Allow      |
+| Priority    | **100**    |
+| Name        | Allow-HTTP |
+
+---
+
+### Rule 2 – Allow HTTPS
+
+| Setting  | Value       |
+| -------- | ----------- |
+| Source   | Any         |
+| Service  | HTTPS       |
+| Action   | Allow       |
+| Priority | **110**     |
+| Name     | Allow-HTTPS |
+
+---
+
+### Rule 3 – Allow SSH or RDP from your Public IP
+
+If Ubuntu
+
+| Setting          | Value              |
+| ---------------- | ------------------ |
+| Source           | IP Addresses       |
+| Source IP        | **Your Public IP** |
+| Destination Port | **22**             |
+| Action           | Allow              |
+| Priority         | **120**            |
+| Name             | Allow-SSH          |
+
+If Windows
+
+Use port **3389** instead.
+
+---
+
+### Rule 4 – Deny Internet
+
+| Setting     | Value         |
+| ----------- | ------------- |
+| Source      | Internet      |
+| Destination | Any           |
+| Port        | *             |
+| Protocol    | Any           |
+| Action      | Deny          |
+| Priority    | **130**       |
+| Name        | Deny-Internet |
+
+---
+
+## Associate with WebSubnet
+
+Go to
+
+**Nikhil-Web-NSG → Subnets → Associate**
+
+Select
+
+* Virtual Network: `Nikhil-VNET01`
+* Subnet: `Nikhil-WebSubnet`
+
+Save.
+
+---
+
+# 2. Create Dev NSG
+
+Name
+
+`Nikhil-Dev-NSG`
+
+Create it exactly the same way.
+
+---
+
+## Configure Rules
+
+### Rule 1 – Allow SSH (Ubuntu)
+
+| Setting   | Value          |
+| --------- | -------------- |
+| Source    | IP Addresses   |
+| Source IP | Your Public IP |
+| Port      | 22             |
+| Priority  | **100**        |
+
+OR
+
+Allow RDP (3389) if Windows.
+
+---
+
+### Rule 2 – Allow Ping from VNET01
+
+Azure NSGs **do not have a built-in ICMP service**, so configure:
+
+| Setting  | Value                                         |
+| -------- | --------------------------------------------- |
+| Source   | IP Addresses                                  |
+| Source   | **10.10.0.0/16**                              |
+| Protocol | ICMP (if available) or Any (for lab purposes) |
+| Action   | Allow                                         |
+| Priority | **110**                                       |
+
+> **Note:** If the Azure portal doesn't let you choose ICMP, select **Any** protocol for the lab, or use Azure CLI/PowerShell to create an ICMP rule if required by your instructor.
+
+---
+
+### Rule 3 – Deny Internet
+
+| Setting  | Value    |
+| -------- | -------- |
+| Source   | Internet |
+| Protocol | Any      |
+| Port     | *        |
+| Action   | Deny     |
+| Priority | **120**  |
+
+---
+
+## Associate with DevSubnet
+
+Go to
+
+**Nikhil-Dev-NSG → Subnets → Associate**
+
+Choose
+
+* VNet: `Nikhil-DevVNET`
+* Subnet: `Nikhil-DevSubnet`
+
+Save.
+
+---
+
+# Final Configuration
+
+| NSG              | Associated Subnet  | Rules                                                         |
+| ---------------- | ------------------ | ------------------------------------------------------------- |
+| `Nikhil-Web-NSG` | `Nikhil-WebSubnet` | HTTP, HTTPS, SSH/RDP from your IP, Deny Internet              |
+| `Nikhil-Dev-NSG` | `Nikhil-DevSubnet` | SSH/RDP from your IP, ICMP from `10.10.0.0/16`, Deny Internet |
+
+### Finding your public IP
+
+To restrict SSH or RDP to your own machine, first find your public IP address by searching **"what is my IP"** in a browser or by running:
+
+* **PowerShell:**
+
+  ```powershell
+  (Invoke-RestMethod ifconfig.me/ip)
+  ```
+
+* **Ubuntu/Linux:**
+
+  ```bash
+  curl ifconfig.me
+  ```
+
+Use the returned IP as the **Source IP** in the NSG rules.
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+## Task 7 – Configure Private DNS
+
+Assuming your name is **Nikhil**, use the following values.
+
+### Step 1 – Create a Private DNS Zone
+
+1. In the Azure portal, search for **Private DNS zones**.
+2. Click **+ Create**.
+3. Configure:
+
+| Setting        | Value                                 |
+| -------------- | ------------------------------------- |
+| Resource Group | `NIKHIL_RG01` (or your Networking RG) |
+| Name           | `nikhil.internal`                     |
+| Region         | Global (default)                      |
+
+4. Click **Review + Create** → **Create**.
+
+---
+
+## Step 2 – Link `Nikhil-VNET01`
+
+1. Open **nikhil.internal**.
+2. Select **Virtual network links**.
+3. Click **+ Add**.
+
+Configure:
+
+| Setting                  | Value           |
+| ------------------------ | --------------- |
+| Link Name                | `Nikhil-VNET01-Link`   |
+| Virtual Network          | `Nikhil-VNET01` |
+| Enable Auto Registration | **Yes**         |
+
+Click **OK**.
+
+---
+
+## Step 3 – Link `Nikhil-DevVNET`
+
+Again click **+ Add**.
+
+Configure:
+
+| Setting                  | Value            |
+| ------------------------ | ---------------- |
+| Link Name                | `Nikhil-DevVNET-Link`   |
+| Virtual Network          | `Nikhil-DevVNET` |
+| Enable Auto Registration | **Yes**          |
+
+Click **OK**.
+
+---
+
+### Expected Result
+
+| Virtual Network  | Auto Registration |
+| ---------------- | ----------------- |
+| `Nikhil-VNET01`  | Enabled           |
+| `Nikhil-DevVNET` | Enabled           |
+
+After a few minutes, Azure will automatically register VM hostnames in the DNS zone.
+
+---
+
+## Step 4 – Verify DNS Records
+
+Open:
+
+**Private DNS Zone → nikhil.internal → Record Sets**
+
+You should see entries similar to:
+
+```
+nikhil-webvm
+nikhil-devvm
+```
+
+with their private IP addresses.
+
+---
+
+## Step 5 – Verify Name Resolution from `Nikhil-DevVM`
+
+SSH or RDP into **Nikhil-DevVM**.
+
+### On Ubuntu
+
+Run:
+
+```bash
+nslookup nikhil-devvm.nikhil.internal
+
+nslookup nikhil-webvm.nikhil.internal
+
+```
+
+or
+
+```bash
+ping nikhil-webvm.nikhil.internal
+```
+
+Expected output:
+
+```text
+Name: nikhil-webvm.nikhil.internal
+Address: 10.10.1.x
+```
+
+---
+
+### On Windows
+
+Open Command Prompt and run:
+
+```cmd
+nslookup nikhil-webvm.nikhil.internal
+```
+
+or
+
+```cmd
+ping nikhil-webvm.nikhil.internal
+```
+
+You should see the **private IP address** of `Nikhil-WebVM`.
+
+---
+
+## Expected Outcome
+
+* ✅ Private DNS zone `nikhil.internal` created.
+* ✅ `Nikhil-VNET01` linked with **Auto Registration = Enabled**.
+* ✅ `Nikhil-DevVNET` linked with **Auto Registration = Enabled**.
+* ✅ `Nikhil-DevVM` can resolve `Nikhil-WebVM` by hostname (e.g., `nikhil-webvm.nikhil.internal`) to its private IP address.
+
+
+http://20.235.64.213
+
+
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw reload
+
+sudo a2enmod ssl
+sudo a2ensite default-ssl
+sudo systemctl restart apache2
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+["uaenorth","koreacentral","southeastasia","eastasia","centralindia"]
+
+For **Task 8 – Configure Azure Policy**, follow these steps in the Azure portal.
+
+---
+
+# Policy 1: Allow resource deployment only in one or two Azure regions
+
+### Step 1: Open Azure Policy
+
+* Go to **Azure Portal**
+* Search for **Policy**
+* Select **Definitions**
+
+### Step 2: Find the built-in policy
+
+Search for:
+
+```text
+Allowed locations
+```
+
+Select the built-in policy **Allowed locations**.
+
+### Step 3: Assign the policy
+
+Click **Assign**.
+
+Configure:
+
+* **Scope**:
+
+  * Select your subscription.
+  * Resource Group: **NIKHIL-RG01**
+
+* **Policy definition**:
+
+  * Allowed locations
+
+### Step 4: Parameters
+
+Select one or two regions, for example:
+
+* **Central India**
+* **South India** (optional)
+
+Click **Review + Create** → **Create**.
+
+This policy prevents users from deploying resources outside the selected regions.
+
+---
+
+# Policy 2: Require every resource to have the tag `Environment`
+
+### Step 1: Open Policy Definitions
+
+Search for the built-in policy:
+
+```text
+Require a tag on resources
+```
+
+Select it.
+
+### Step 2: Assign the policy
+
+Click **Assign**.
+
+Configure:
+
+* **Scope**
+
+  * Subscription
+  * Resource Group: **NIKHIL-RG01**
+
+### Step 3: Parameters
+
+Set:
+
+* **Tag Name**
+
+  ```
+  Environment
+  ```
+
+Leave the other settings at their defaults unless your lab specifies otherwise.
+
+Click **Review + Create** → **Create**.
+
+---
+
+## Verify the policies
+
+Go to:
+
+**Policy → Assignments**
+
+You should see two assignments:
+
+1. **Allowed locations**
+
+   * Scope: `NIKHIL-RG01`
+   * Allowed region(s): `Central India` (and optionally `South India`)
+
+2. **Require a tag on resources**
+
+   * Scope: `NIKHIL-RG01`
+   * Required tag: `Environment`
+
+---
+
+### Test the policies
+
+* **Policy 1:** Try creating a VM in a region that is **not** allowed (for example, East US). Azure should block the deployment with a policy violation.
+* **Policy 2:** Try creating a resource in `NIKHIL-RG01` **without** the `Environment` tag. Azure should deny the creation until the required tag is provided.
+
+These steps satisfy the requirements you listed:
+
+* ✅ Policy 1: Restrict deployments to one or two Azure regions.
+* ✅ Policy 2: Require the `Environment` tag on every resource in `NIKHIL-RG01`.
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+For **Task 9**, you need to add **three tags** to **every resource** in your resource group.
+
+### Method 1: Using the Azure Portal (Recommended)
+
+Repeat these steps for **each resource** (VMs, Virtual Network, NSGs, Public IPs, Disks, etc.):
+
+1. Go to **Azure Portal**.
+2. Open the resource (for example, **Nikhil-WebVM**).
+3. In the left menu, click **Tags**.
+4. Add these tags:
+
+| Tag Name    | Value                                         |
+| ----------- | --------------------------------------------- |
+| Environment | Production                                    |
+| Owner       | Nikhil *(or your full name, e.g., Nikhil DR)* |
+| Department  | IT                                            |
+
+5. Click **Apply** or **Save**.
+
+Repeat for every resource in **NIKHIL-RG01**.
+
+---
+
+### Method 2: Tag all resources at once from the Resource Group
+
+If your lab allows it:
+
+1. Open **Resource Groups** → **NIKHIL-RG01**.
+2. Select **Tags**.
+3. Add:
+
+| Name        | Value      |
+| ----------- | ---------- |
+| Environment | Production |
+| Owner       | Nikhil     |
+| Department  | IT         |
+
+4. Click **Apply**.
+5. If prompted with an option such as **Apply tags to resources** or **Apply to existing resources**, select it. This propagates the tags to the resources in the group.
+
+---
+
+### Verify
+
+Open any resource (for example, **Nikhil-WebVM**) and go to **Tags**. You should see:
+
+```text
+Environment = Production
+Owner = Nikhil
+Department = IT
+```
+
+This satisfies the task requirement to apply the specified tags to all resources.

@@ -1,0 +1,35 @@
+#!/bin/bash
+ 
+# Update package index and install apache2 (httpd) web server
+sudo apt-get update
+sudo apt-get install -y apache2
+ 
+# Get the server's hostname
+SERVER_NAME=$(hostname)
+ 
+# Create a custom HTML page displaying the server's name
+sudo echo "<html>
+ <head><title>Welcome to $SERVER_NAME</title></head>
+ <body>
+   <h1>Server Name: $SERVER_NAME</h1>
+   <p>Welcome to your Apache web server running on Azure!</p>
+ </body>
+</html>" > /var/www/html/index.html
+ 
+# Ensure Apache is enabled to start on boot
+sudo systemctl enable apache2
+ 
+# Start Apache service
+sudo systemctl start apache2
+ 
+# Allow HTTP traffic through firewall (if UFW is enabled)
+sudo ufw allow 'Apache'
+ 
+# Restart Apache to ensure the custom page is loaded
+sudo systemctl restart apache2
+ 
+# Optionally, you can check Apache status to confirm it's running
+sudo systemctl status apache2
+ 
+
+ 

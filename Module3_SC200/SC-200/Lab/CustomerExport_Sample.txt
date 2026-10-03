@@ -1,0 +1,10 @@
+Customer Export - Internal Use Only
+Name: John Doe
+Card Number: 4111 1111 1111 1111
+Expiration: 12/2028
+SSN: 078-05-1120
+
+Name: Jane Smith
+Card Number: 5500 0000 0000 0004
+Expiration: 06/2027
+SSN: 219-09-9999

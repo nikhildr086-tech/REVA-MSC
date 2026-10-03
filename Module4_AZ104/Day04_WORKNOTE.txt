@@ -1,0 +1,68 @@
+Command to install webserver (http) during VM Installation
+
+
+#!/bin/bash
+# Update package index and install apache2 (httpd) web server
+sudo apt-get update
+sudo apt-get install -y apache2
+# Get the server's hostname
+SERVER_NAME=$(hostname)
+# Create a custom HTML page displaying the server's name
+sudo echo "<html>
+<head><title>Welcome to $SERVER_NAME</title></head>
+<body>
+<h1>Server Name: $SERVER_NAME</h1>
+<p>Welcome to your Apache web server running on Azure!</p>
+</body>
+</html>" > /var/www/html/index.html
+# Ensure Apache is enabled to start on boot
+sudo systemctl enable apache2
+# Start Apache service
+sudo systemctl start apache2
+# Allow HTTP traffic through firewall (if UFW is enabled)
+sudo ufw allow 'Apache'
+# Restart Apache to ensure the custom page is loaded
+sudo systemctl restart apache2
+# Optionally, you can check Apache status to confirm it's running
+sudo systemctl status apache2
+
+
+This is used to create a strus (CPU utilisation) to test VM scale set .
+
+
+sudo apt install stress
+sudo stress -c 4
+
+
+To resolve the issue with deleting the restore point 'AzureBackup_VM1_1548113399144507/AzureBackup_20260725_093858', follow these troubleshooting steps:
+
+1. **Revoke Active SAS**: An active Shared Access Signature (SAS) on a disk restore point can block deletion. Use Azure CLI or REST API to revoke SAS:
+   - Azure CLI: `az disk revoke-access`
+   - REST: Revoke access for disk restore point
+
+2. **Delete Hidden Restore Point Collection**: 
+   - Show hidden types in the Azure portal's Resource groups view to find the hidden AzureBackupRG and the Restore Point Collection resource.
+   - Attempt to delete the Restore Point Collection from the portal. If that fails, use PowerShell/CLI:
+     - PowerShell: `Remove-AzResource`
+     - CLI: `az resource delete`
+
+3. **Handle Active SAS Errors**: If you encounter an "active SAS" error, revoke the SAS via REST API, then retry the deletion.
+
+4. **Remove Resource Locks**: Check for and delete any locks in the resource group that could prevent deletion.
+
+5. **Disable Backup/Stop Protection**: If a related VM appears in the Recovery Services Vault, stop backup (delete data) before attempting restore point deletion.
+
+6. **Retry After 24 Hours**: Backend locks may take time to clear; retry deletion after 24 hours if immediate attempts fail.
+
+7. **Soft Delete/Enhanced Security**: If soft delete or enhanced security prevents disabling, and the above steps do not resolve the issue, consider opening a support case with Microsoft for backend remediation.
+
+For more detailed instructions, you can refer to these resources:
+- [Orphaned restore point cannot be deleted - Microsoft Q&A](https://learn.microsoft.com/answers/a/12687682?wt.mc_id=knowledgesearch_inproduct_azure-support-&-troubleshooting-copilot)
+- [Can't delete Restore Point Collection - Microsoft Q&A](https://learn.microsoft.com/answers/a/12854999?wt.mc_id=knowledgesearch_inproduct_azure-support-&-troubleshooting-copilot)
+
+These steps should help you resolve the issue with the restore point deletion.
+
+
+Go to Vault Properties
+Open Soft Delete Settings
+Review or Update Soft Delete Retention Period

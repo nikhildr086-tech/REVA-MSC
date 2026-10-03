@@ -1,0 +1,64 @@
+Yes — below are detailed AWS Console steps to build exactly what you described: one VPC, one public subnet for Windows with internet access, and one private subnet for Ubuntu with only private connectivity. [docs.aws.amazon](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-private-subnets-nat.html)
+
+## 1. Create the VPC
+1. Sign in to the AWS Console and open the **VPC** service. [docs.aws.amazon](https://docs.aws.amazon.com/workspaces/latest/adminguide/create-configure-new-vpc-with-private-public-subnets-nat.html)
+2. Choose **Create VPC** or **Launch VPC Wizard** and select **VPC with Public and Private Subnets** if you want AWS to generate most of the networking pieces for you. [docs.aws.amazon](https://docs.aws.amazon.com/workspaces/latest/adminguide/create-configure-new-vpc-with-private-public-subnets-nat.html)
+3. Set a VPC CIDR block such as `10.0.0.0/16` and give the VPC a name. [docs.aws.amazon](https://docs.aws.amazon.com/workspaces/latest/adminguide/create-configure-new-vpc-with-private-public-subnets-nat.html)
+4. Keep IPv6 disabled unless you specifically need it. [docs.aws.amazon](https://docs.aws.amazon.com/workspaces/latest/adminguide/create-configure-new-vpc-with-private-public-subnets-nat.html)
+
+## 2. Create the subnets
+1. Create **Subnet 1** as the **public subnet**, for example `10.0.1.0/24`. [docs.aws.amazon](https://docs.aws.amazon.com/workspaces/latest/adminguide/create-configure-new-vpc-with-private-public-subnets-nat.html)
+2. Create **Subnet 2** as the **private subnet**, for example `10.0.2.0/24`. [docs.aws.amazon](https://docs.aws.amazon.com/workspaces/latest/adminguide/create-configure-new-vpc-with-private-public-subnets-nat.html)
+3. Keep both subnets in the same VPC, and place them in the Availability Zones you prefer. [docs.aws.amazon](https://docs.aws.amazon.com/workspaces/latest/adminguide/create-configure-new-vpc-with-private-public-subnets-nat.html)
+4. Make sure the public subnet is intended for internet-facing resources, while the private subnet is intended for internal-only resources. [docs.aws.amazon](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html)
+
+## 3. Attach an Internet Gateway
+1. Create an **Internet Gateway** in VPC. [docs.aws.amazon](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-private-subnets-nat.html)
+2. Attach the Internet Gateway to your VPC. [docs.aws.amazon](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-private-subnets-nat.html)
+3. This gateway is what allows the public subnet to reach the internet. [docs.aws.amazon](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-private-subnets-nat.html)
+
+## 4. Configure route tables
+1. Create or use a route table for the **public subnet**. [docs.aws.amazon](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-private-subnets-nat.html)
+2. Add a route `0.0.0.0/0` pointing to the Internet Gateway. [docs.aws.amazon](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-private-subnets-nat.html)
+3. Associate this route table with the public subnet. [docs.aws.amazon](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-private-subnets-nat.html)
+4. For the **private subnet**, keep only the local VPC route and do **not** add a direct route to the Internet Gateway. [docs.aws.amazon](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html)
+5. If you want the private subnet to have outbound internet access later without being directly reachable, add a NAT Gateway in the public subnet and point the private route table to it. [jasonwatmore](https://jasonwatmore.com/post/2021/05/30/aws-create-a-vpc-with-public-and-private-subnets-and-a-nat-gateway)
+
+## 5. Enable public IP on the public subnet
+1. Open the public subnet settings. [youtube](https://www.youtube.com/watch?v=Fl2FfkYd6PE)
+2. Enable **Auto-assign public IPv4 address** for the public subnet, or assign a public IP when launching the Windows instance. [linkedin](https://www.linkedin.com/pulse/creating-aws-vpc-public-private-subnets-step-by-step-guide-shawon-ws1qc)
+3. Leave auto-assign public IP disabled for the private subnet so instances there stay private. [linkedin](https://www.linkedin.com/pulse/creating-aws-vpc-public-private-subnets-step-by-step-guide-shawon-ws1qc)
+
+## 6. Create security groups
+1. Create a security group for the **Windows instance** and allow **RDP 3389** only from your own IP address. [docs.aws.amazon](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+2. Create a security group for the **Ubuntu instance** and allow **SSH 22** only from a trusted internal source, bastion host, VPN, or AWS Systems Manager. [docs.aws.amazon](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+3. Keep outbound rules as needed for your environment, but avoid opening inbound access broadly. [docs.aws.amazon](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+
+## 7. Launch the Windows EC2 instance
+1. Choose **Launch Instance** in EC2. [docs.aws.amazon](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+2. Select a **Windows Server** AMI. [docs.aws.amazon](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+3. Choose the VPC you created. [docs.aws.amazon](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+4. Select **Subnet 1 / public subnet**. [linkedin](https://www.linkedin.com/pulse/creating-aws-vpc-public-private-subnets-step-by-step-guide-shawon-ws1qc)
+5. Enable **Auto-assign public IP** or manually assign a public IP. [youtube](https://www.youtube.com/watch?v=Fl2FfkYd6PE)
+6. Attach the Windows security group that allows RDP from your IP. [docs.aws.amazon](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+7. Launch the instance and connect using RDP through the public IP. [docs.aws.amazon](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+
+## 8. Launch the Ubuntu EC2 instance
+1. Choose **Launch Instance** again. [docs.aws.amazon](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+2. Select an **Ubuntu** AMI. [docs.aws.amazon](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+3. Choose the same VPC. [docs.aws.amazon](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+4. Select **Subnet 2 / private subnet**. [linkedin](https://www.linkedin.com/pulse/creating-aws-vpc-public-private-subnets-step-by-step-guide-shawon-ws1qc)
+5. Make sure **Auto-assign public IP** is **disabled**. [youtube](https://www.youtube.com/watch?v=Fl2FfkYd6PE)
+6. Attach the Ubuntu security group. [docs.aws.amazon](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+7. Launch the instance; it will only have a private IP and will not be directly reachable from the internet. [docs.aws.amazon](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html)
+
+## 9. Validate the setup
+1. Confirm the Windows instance has a **public IPv4 address** and is in the public subnet. [linkedin](https://www.linkedin.com/pulse/creating-aws-vpc-public-private-subnets-step-by-step-guide-shawon-ws1qc)
+2. Confirm the Ubuntu instance has only a **private IPv4 address** and no public IP. [linkedin](https://www.linkedin.com/pulse/creating-aws-vpc-public-private-subnets-step-by-step-guide-shawon-ws1qc)
+3. Check the route tables to verify the public subnet routes to the Internet Gateway and the private subnet does not. [docs.aws.amazon](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html)
+4. Test Windows access with RDP, and confirm Ubuntu is reachable only from internal network paths. [docs.aws.amazon](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+
+## 10. Optional improvement
+If you need the Ubuntu instance to install packages or reach external repositories, add a **NAT Gateway** in the public subnet and route private subnet outbound traffic through it. That gives the private instance outbound internet access without exposing it publicly. [jasonwatmore](https://jasonwatmore.com/post/2021/05/30/aws-create-a-vpc-with-public-and-private-subnets-and-a-nat-gateway)
+
+Would you like the same steps as a **diagram**, a **CloudFormation template**, or an **AWS CLI script**?

@@ -1,0 +1,55 @@
+My Doubt
+
+What is authentication and autherisation
+Identity and access management
+Microsoft Entra ID Plan
+Just in time identity
+SSPR registration
+What is the deference between identity and account
+What is p1 and p2 
+
+Xpress rout and VPN
+VPN Device is physical device ?
+Once server moved DNS why I am not able to login VM as local user
+Why Domain controler and entra id syn is required.
+
+
+
+dsadd ou "ou=test_ou,dc=testd,dc=local"
+ 
+for /l %I in (1,1,10) do dsadd user "cn=test%I,ou=test_ou,dc=testd,dc=local" -pwd asd@123
+
+
+Day 2:
+
+DMC
+What is private DNS and public DNS
+Global vnet region and local region
+What is internet and intranet
+
+
+Day 3:
+
+Azure private endpoint
+Service endpoint and private enpoint
+What is relation and non relation  --- Azure table
+SMP protocal -- File server protocall
+Microsoft storage explorer
+
+
+Day 4:
+
+What is microservice and --- container topic
+Azure ACR
+Azure Devops
+Azure Container Registry
+
+
+nikhildr086@gmail.com
+
+nikhildr086-tech
+
+
+
+
+

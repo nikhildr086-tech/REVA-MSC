@@ -1,0 +1,39 @@
+portal.azure.com
+entra.microsoft.com
+https://admin.cloud.microsoft/
+https://security.microsoft.com/
+http://securitycopilot.microsoft.com/
+https://purview.microsoft.com/
+https://app.fabric.microsoft.com/
+https://copilotstudio.microsoft.com/
+https://admin.powerplatform.microsoft.com/
+https://make.powerapps.com/
+https://make.powerautomate.com/
+
+
+
+
+https://login.microsoft.com
+
+
+oadmin@nikhildr086outlook.onmicrosoft.com
+
+nikhtest@nikhildr086outlook.onmicrosoft.com
+
+
+Working Rule:
+
+let timeFrame = 1h;
+let failureThreshold = 5;
+SigninLogs
+| where TimeGenerated >= ago(timeFrame)
+| where ResultType !in ("0", "50125")
+| summarize 
+    failureCount = countif(ResultType != "0"),
+    successCount = countif(ResultType == "0"),
+    firstFailure = min(TimeGenerated),
+    lastSuccess = maxif(TimeGenerated, ResultType == "0")
+  by UserPrincipalName, IPAddress, AppDisplayName
+| where failureCount >= failureThreshold and successCount > 0
+| project UserPrincipalName, IPAddress, AppDisplayName,
+         failureCount, successCount, firstFailure, lastSuccess

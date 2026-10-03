@@ -1,0 +1,81 @@
+ticket_id,customer_id,opened_date,channel,status,notes
+TCK00001,CUST00062,2026-03-28,Email,Closed,"Shipping delay complaint from Robert Woodward, address: 5574 Charles Flats Apt. 912. Phone: 865.471.9182x61990."
+TCK00002,CUST00041,2026-07-21,Social Media,Resolved,"Shipping delay complaint from Samantha Osborn, address: 74205 Bradley Throughway Apt. 296. Phone: 400-949-9154x7887."
+TCK00003,CUST00042,2026-04-02,Chat,Closed,Jose Ward reported a login issue. Email: bryanwilson@example.com. No sensitive data shared.
+TCK00004,CUST00047,2026-02-03,Email,Resolved,Customer Tracy Jackson called about a billing issue on card ending in 3395. Callback number +1-508-301-0062.
+TCK00005,CUST00088,2025-10-23,Phone,Closed,Refund request from Sandra Black for order placed with card ending 8819.
+TCK00006,CUST00091,2026-02-13,Social Media,Escalated,Zachary Hall requested account deletion. Email on file: emilyward@example.net. SSN provided for verification: 755-91-1125.
+TCK00007,CUST00107,2026-01-05,Social Media,Closed,Customer Dustin Johnson called about a billing issue on card ending in 9654. Callback number 542.531.2209x949.
+TCK00008,CUST00018,2026-07-01,Email,Escalated,"Shipping delay complaint from Shawn Edwards, address: 93248 Andrea Course. Phone: +1-487-660-3859x77034."
+TCK00009,CUST00085,2026-03-14,Social Media,Closed,Tony Rivera requested account deletion. Email on file: emilyyoung@example.com. SSN provided for verification: 439-22-0080.
+TCK00010,CUST00010,2026-07-03,Social Media,Closed,Christine Davis reported a login issue. Email: emilywalker@example.org. No sensitive data shared.
+TCK00011,CUST00069,2025-08-10,Social Media,Open,Refund request from Ashley Young for order placed with card ending 9970.
+TCK00012,CUST00102,2026-07-01,Phone,Open,"Shipping delay complaint from Amanda Greene, address: 240 Joyce Forest. Phone: (865)293-9836x84577."
+TCK00013,CUST00099,2025-12-28,Chat,Resolved,Alexis Bauer requested account deletion. Email on file: fosterjohn@example.org. SSN provided for verification: 778-81-0984.
+TCK00014,CUST00083,2026-07-22,Phone,Closed,Refund request from Crystal Lewis for order placed with card ending 4246.
+TCK00015,CUST00097,2025-10-31,Social Media,Open,"Shipping delay complaint from Derek Mitchell, address: 41638 Mitchell Summit Suite 631. Phone: 806-549-3085x3686."
+TCK00016,CUST00002,2026-03-28,Chat,Resolved,Customer Michelle Ray called about a billing issue on card ending in 7675. Callback number 731-564-7525.
+TCK00017,CUST00066,2026-01-09,Email,Closed,Refund request from Theresa Oconnor for order placed with card ending 0060.
+TCK00018,CUST00048,2025-12-02,Social Media,Resolved,Joseph Sanders reported a login issue. Email: susan79@example.org. No sensitive data shared.
+TCK00019,CUST00045,2026-04-26,Social Media,Open,Customer Rhonda Garrett called about a billing issue on card ending in 4034. Callback number +1-568-656-6246x2873.
+TCK00020,CUST00038,2026-06-11,Phone,Open,Joshua Hays reported a login issue. Email: andersoncolin@example.com. No sensitive data shared.
+TCK00021,CUST00107,2025-10-13,Chat,Escalated,Dustin Johnson requested account deletion. Email on file: nicole66@example.com. SSN provided for verification: 237-88-0428.
+TCK00022,CUST00044,2025-11-01,Email,Closed,Steven Ball reported a login issue. Email: opatel@example.org. No sensitive data shared.
+TCK00023,CUST00045,2025-12-23,Phone,Closed,Rhonda Garrett reported a login issue. Email: dpeters@example.com. No sensitive data shared.
+TCK00024,CUST00093,2026-01-03,Chat,Open,Amber Williams reported a login issue. Email: uwatson@example.com. No sensitive data shared.
+TCK00025,CUST00039,2025-07-24,Phone,Open,Customer Cristina Harvey called about a billing issue on card ending in 4438. Callback number 8915307562.
+TCK00026,CUST00109,2025-10-02,Phone,Resolved,"Shipping delay complaint from Michael Mills, address: 4742 Rachel Flats Apt. 940. Phone: (468)460-2592."
+TCK00027,CUST00120,2025-08-21,Email,Resolved,Stacy Nielsen requested account deletion. Email on file: noahthornton@example.com. SSN provided for verification: 626-84-4467.
+TCK00028,CUST00043,2026-02-17,Social Media,Closed,Refund request from Sean Brown for order placed with card ending 2303.
+TCK00029,CUST00030,2025-08-01,Email,Resolved,Kyle Bean reported a login issue. Email: stacey73@example.org. No sensitive data shared.
+TCK00030,CUST00082,2026-04-18,Social Media,Open,Louis Robinson reported a login issue. Email: abigailhartman@example.org. No sensitive data shared.
+TCK00031,CUST00095,2026-07-15,Email,Closed,Refund request from Greg Deleon for order placed with card ending 7808.
+TCK00032,CUST00076,2025-12-25,Social Media,Open,James Gonzalez reported a login issue. Email: marie35@example.net. No sensitive data shared.
+TCK00033,CUST00091,2025-08-19,Email,Escalated,Zachary Hall requested account deletion. Email on file: emilyward@example.net. SSN provided for verification: 755-91-1125.
+TCK00034,CUST00097,2025-10-22,Phone,Resolved,Customer Derek Mitchell called about a billing issue on card ending in 2149. Callback number 806-549-3085x3686.
+TCK00035,CUST00047,2025-09-21,Email,Closed,"Shipping delay complaint from Tracy Jackson, address: 750 Hopkins Brook. Phone: +1-508-301-0062."
+TCK00036,CUST00015,2025-11-13,Social Media,Escalated,"Shipping delay complaint from John Martinez, address: 0824 Terri Plaza. Phone: (333)574-9894."
+TCK00037,CUST00077,2026-03-09,Social Media,Open,Richard Rivers reported a login issue. Email: mary76@example.net. No sensitive data shared.
+TCK00038,CUST00045,2025-08-27,Social Media,Resolved,"Shipping delay complaint from Rhonda Garrett, address: 86688 Paul Glens Apt. 517. Phone: +1-568-656-6246x2873."
+TCK00039,CUST00105,2026-01-14,Phone,Resolved,"Shipping delay complaint from Daniel Cole, address: 94070 Paul Groves Suite 104. Phone: 888.248.7920."
+TCK00040,CUST00041,2026-05-14,Email,Escalated,Customer Samantha Osborn called about a billing issue on card ending in 4543. Callback number 400-949-9154x7887.
+TCK00041,CUST00015,2026-02-24,Chat,Resolved,John Martinez requested account deletion. Email on file: leslienewton@example.net. SSN provided for verification: 304-30-5913.
+TCK00042,CUST00066,2026-03-09,Social Media,Resolved,Theresa Oconnor reported a login issue. Email: fconner@example.net. No sensitive data shared.
+TCK00043,CUST00074,2025-11-22,Social Media,Resolved,Kim Johnston reported a login issue. Email: tracygallagher@example.org. No sensitive data shared.
+TCK00044,CUST00063,2025-10-22,Email,Resolved,Refund request from Mark Davis for order placed with card ending 0665.
+TCK00045,CUST00063,2025-08-31,Email,Resolved,"Shipping delay complaint from Mark Davis, address: 5199 Lowery Club. Phone: +1-344-220-6788x31712."
+TCK00046,CUST00041,2025-10-18,Phone,Escalated,Samantha Osborn reported a login issue. Email: lfrench@example.net. No sensitive data shared.
+TCK00047,CUST00002,2025-11-24,Email,Resolved,Michelle Ray reported a login issue. Email: williamsjeremy@example.com. No sensitive data shared.
+TCK00048,CUST00105,2025-08-11,Social Media,Closed,Daniel Cole reported a login issue. Email: riverajody@example.org. No sensitive data shared.
+TCK00049,CUST00088,2025-11-22,Social Media,Closed,Sandra Black reported a login issue. Email: kgreene@example.net. No sensitive data shared.
+TCK00050,CUST00063,2026-05-09,Phone,Open,Mark Davis requested account deletion. Email on file: tanyafoster@example.org. SSN provided for verification: 064-29-2142.
+TCK00051,CUST00102,2026-07-03,Chat,Open,Amanda Greene requested account deletion. Email on file: rachel85@example.com. SSN provided for verification: 744-05-4661.
+TCK00052,CUST00036,2026-05-02,Chat,Resolved,Cynthia Pierce requested account deletion. Email on file: colleenmendez@example.org. SSN provided for verification: 786-74-6826.
+TCK00053,CUST00100,2026-03-06,Social Media,Open,Tracy Knight reported a login issue. Email: mario74@example.net. No sensitive data shared.
+TCK00054,CUST00074,2026-04-28,Chat,Escalated,Customer Kim Johnston called about a billing issue on card ending in 6253. Callback number (296)566-6760.
+TCK00055,CUST00070,2026-03-08,Social Media,Resolved,Customer Douglas Franklin called about a billing issue on card ending in 6283. Callback number 607.945.0544.
+TCK00056,CUST00055,2026-02-19,Email,Escalated,Customer Kelly Hill called about a billing issue on card ending in 4494. Callback number 001-578-881-9148x58078.
+TCK00057,CUST00112,2025-08-23,Social Media,Escalated,Customer Mathew Foster called about a billing issue on card ending in 3570. Callback number +1-677-702-7278x57608.
+TCK00058,CUST00045,2025-08-14,Social Media,Open,Customer Rhonda Garrett called about a billing issue on card ending in 4034. Callback number +1-568-656-6246x2873.
+TCK00059,CUST00100,2025-08-04,Email,Escalated,Tracy Knight requested account deletion. Email on file: mario74@example.net. SSN provided for verification: 001-82-8290.
+TCK00060,CUST00111,2025-11-14,Social Media,Resolved,Refund request from Cristina Benitez for order placed with card ending 8851.
+TCK00061,CUST00079,2026-05-29,Email,Resolved,Aaron Kelly requested account deletion. Email on file: amy51@example.org. SSN provided for verification: 221-59-3123.
+TCK00062,CUST00104,2025-08-15,Chat,Escalated,Customer Earl Rogers called about a billing issue on card ending in 9247. Callback number (541)568-6227x8376.
+TCK00063,CUST00077,2025-09-07,Email,Escalated,Refund request from Richard Rivers for order placed with card ending 8905.
+TCK00064,CUST00091,2026-06-24,Chat,Escalated,"Shipping delay complaint from Zachary Hall, address: 489 Bailey Via. Phone: 5212465669."
+TCK00065,CUST00110,2025-12-31,Phone,Resolved,Refund request from Lori Clark for order placed with card ending 3908.
+TCK00066,CUST00097,2025-11-10,Phone,Escalated,Derek Mitchell reported a login issue. Email: wattstravis@example.com. No sensitive data shared.
+TCK00067,CUST00111,2026-03-09,Email,Resolved,Cristina Benitez requested account deletion. Email on file: mramsey@example.net. SSN provided for verification: 828-24-9985.
+TCK00068,CUST00019,2025-08-16,Email,Closed,"Shipping delay complaint from Michelle Hill, address: 636 Louis Mountains. Phone: 704-849-9727x875."
+TCK00069,CUST00063,2026-03-27,Chat,Closed,Mark Davis requested account deletion. Email on file: tanyafoster@example.org. SSN provided for verification: 064-29-2142.
+TCK00070,CUST00049,2026-02-12,Phone,Open,Krystal Norris reported a login issue. Email: masonterri@example.org. No sensitive data shared.
+TCK00071,CUST00052,2025-11-07,Chat,Escalated,Refund request from Samantha Holt for order placed with card ending 7758.
+TCK00072,CUST00059,2025-12-09,Chat,Open,Robert Payne reported a login issue. Email: kathrynbest@example.org. No sensitive data shared.
+TCK00073,CUST00112,2025-08-27,Social Media,Escalated,Customer Mathew Foster called about a billing issue on card ending in 3570. Callback number +1-677-702-7278x57608.
+TCK00074,CUST00109,2026-04-24,Social Media,Resolved,Customer Michael Mills called about a billing issue on card ending in 0389. Callback number (468)460-2592.
+TCK00075,CUST00055,2025-10-16,Social Media,Escalated,Kelly Hill requested account deletion. Email on file: gary79@example.net. SSN provided for verification: 105-95-4056.
+TCK00076,CUST00042,2026-02-27,Chat,Resolved,"Shipping delay complaint from Jose Ward, address: 8783 Erin Ranch Apt. 878. Phone: (568)441-4593."
+TCK00077,CUST00073,2026-03-21,Chat,Open,Amanda Glover reported a login issue. Email: william28@example.org. No sensitive data shared.
+TCK00078,CUST00006,2025-07-26,Social Media,Open,Customer Brian Fitzgerald called about a billing issue on card ending in 8420. Callback number 388.520.8121x9136.
+TCK00079,CUST00016,2025-12-10,Social Media,Closed,Lynn Morales requested account deletion. Email on file: rayglenda@example.org. SSN provided for verification: 462-57-4872.
+TCK00080,CUST00001,2026-05-10,Email,Resolved,Angel Hill reported a login issue. Email: donaldgarcia@example.net. No sensitive data shared.

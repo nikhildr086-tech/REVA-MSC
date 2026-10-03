@@ -1,0 +1,17 @@
+What is 3 tair architecture
+AWS and Azure subscription and tenent management need to check
+aws control tower -- equelent to azure lighhouse 
+DMZ 
+microservice - retry paters
+finops partitioner
+IT team structure (release team , infrstructure,)
+well architecture
+Why elastic word came on aws
+loosly couple and titly coupled 
+keda 
+OLTP and OLAP --- Normalize term
+COSMOSDB and NOSQL -- Why nosql is region specific
+Azure front door
+What is the deference between service endpoint 
+
+

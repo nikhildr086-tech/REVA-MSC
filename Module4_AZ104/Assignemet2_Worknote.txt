@@ -1,0 +1,259 @@
+Assignemet2_Worknote
+
+Task 1 – Create Resource Groups:
+
+Resource Group	Purpose	Region
+Nikhil-Infra-RG	Infrastructure Resources	Any Azure region (e.g., Central India)
+Nikhil-Storage-RG	Storage Services	Same region or any other Azure region
+Using the Azure Portal
+Sign in to the Azure portal.
+Search for Resource groups.
+Click + Create.
+Select your Azure subscription.
+Enter:
+Resource group: Nikhil-Infra-RG
+Region: Central India (or any region specified by your assignment)
+Click Review + Create → Create.
+Repeat the steps to create:
+Resource group: Nikhil-Storage-RG
+Region: Central India (or another region if desired)
+
+
+
+Task 2 – Create a Storage Account
+Create one Storage Account.
+Requirements
+    • Standard Performance
+    • Standard LRS Redundancy
+    • Hot Access Tier
+    • Secure Transfer Required
+    • Minimum TLS Version 1.2
+
+
+
+For **Task 2**, you'll create one Azure Storage Account with the specified configuration.
+
+### Storage Account Configuration
+
+| Setting                  | Value                                                                     |
+| ------------------------ | ------------------------------------------------------------------------- |
+| Resource Group           | `Nikhil-Storage-RG`                                                       |
+| Storage Account Name     | `nikhilstorage01` *(must be globally unique, lowercase, 3–24 characters)* |
+| Region                   | Same region as your Resource Group (e.g., **Central India**)              |
+| Performance              | **Standard**                                                              |
+| Redundancy               | **Locally Redundant Storage (LRS)**                                       |
+| Access Tier              | **Hot**                                                                   |
+| Secure Transfer Required | **Enabled**                                                               |
+| Minimum TLS Version      | **Version 1.2**                                                           |
+
+### Steps in the Azure Portal
+
+1. Go to **Storage accounts**.
+2. Click **+ Create**.
+3. Select your subscription.
+4. Choose **Resource Group**: `Nikhil-Storage-RG`.
+5. Enter a unique **Storage account name**, for example:
+
+   * `nikhilstorage01`
+   * If unavailable, try `nikhilstorage2026` or `nikhildbastore01`.
+6. Select **Region** (e.g., **Central India**).
+7. Under **Performance**, select **Standard**.
+8. Under **Redundancy**, select **Locally-redundant storage (LRS)**.
+9. Under **Primary service**, keep **Azure Blob Storage or Azure Storage (General-purpose v2)** (default).
+10. Set **Access tier (default)** to **Hot**.
+11. On the **Networking** tab, leave the default settings unless your assignment specifies otherwise.
+12. On the **Advanced** tab:
+
+    * **Secure transfer required** → **Enabled**
+    * **Minimum TLS version** → **Version 1.2**
+13. Click **Review + Create** → **Create**.
+
+### Why these settings?
+
+* **Standard Performance**: Cost-effective for general workloads.
+* **LRS**: Stores three copies of your data within a single Azure datacenter.
+* **Hot Access Tier**: Best for data that is accessed frequently.
+* **Secure Transfer Required**: Forces HTTPS instead of HTTP.
+* **TLS 1.2**: Ensures clients use a modern, secure encryption protocol.
+
+This configuration matches the requirements of your AZ-104 assignment.
+
+
+
+3) Inside the Storage Account create the following File Shares.
+File Share
+Quota
+HR
+50 GB
+Finance
+100 GB
+IT
+20 GB
+Requirements
+    • Disable Soft Delete for File Shares.
+    • Upload at least one file into each File Share.
+	
+
+For this task, you need to create **three Azure File Shares** inside the storage account you created earlier.
+
+### Required File Shares
+
+| File Share |  Quota |
+| ---------- | -----: |
+| `HR`       |  50 GB |
+| `Finance`  | 100 GB |
+| `IT`       |  20 GB |
+
+### Step 1: Open the Storage Account
+
+1. Go to the **Azure portal**.
+2. Open **Storage accounts**.
+3. Select your storage account (e.g., `nikhilstorage01`).
+
+### Step 2: Disable Soft Delete
+
+1. In the left menu, under **Data storage**, click **File shares**.
+2. Click **Data protection** (or **File share data protection**, depending on the portal version).
+3. Turn **Soft delete for file shares** **Off**.
+4. Click **Save**.
+
+> **What is Soft Delete?**
+> Soft Delete keeps deleted file shares for a specified number of days so they can be recovered. Your assignment specifically requires this feature to be **disabled**.
+
+### Step 3: Create the File Shares
+
+Create the following three file shares:
+
+#### File Share 1
+
+* **Name:** `HR`
+* **Quota:** `50 GB`
+
+#### File Share 2
+
+* **Name:** `Finance`
+* **Quota:** `100 GB`
+
+#### File Share 3
+
+* **Name:** `IT`
+* **Quota:** `20 GB`
+
+For each one:
+
+1. Click **+ File share**.
+2. Enter the **Name**.
+3. Enter the **Quota**.
+4. Click **Create**.
+
+### Step 4: Upload a File to Each Share
+
+For each file share:
+
+1. Open the file share.
+2. Click **Upload**.
+3. Select any small file from your computer (for example, a `.txt`, `.pdf`, or `.jpg` file).
+4. Click **Upload**.
+
+You can even create three simple text files:
+
+* `hr.txt`
+* `finance.txt`
+* `it.txt`
+
+Upload one to each corresponding file share.
+
+### Expected Result
+
+| File Share | Quota  | At Least One File |
+| ---------- | ------ | ----------------- |
+| HR         | 50 GB  | ✅                 |
+| Finance    | 100 GB | ✅                 |
+| IT         | 20 GB  | ✅                 |
+
+This completes the task and satisfies all the assignment requirements.
+
+
+
+Task 4 – Configure Blob Storage
+Create two Blob Containers.
+    • backup
+    • documents
+Upload
+    • One PDF file
+    • One Image
+	
+For **Task 4**, you need to create **two Blob Containers** inside your storage account and upload files.
+
+### Step 1: Open your Storage Account
+
+1. Go to **Azure Portal**.
+2. Open **Storage Accounts**.
+3. Select **nikhilstorage086**.
+
+### Step 2: Create the Blob Containers
+
+1. In the left menu, click **Containers** (under **Data storage**).
+2. Click **+ Container**.
+3. Create the first container:
+
+   * **Name:** `backup`
+   * **Public access level:** **Private (no anonymous access)** (default)
+   * Click **Create**.
+4. Repeat the process for:
+
+   * **Name:** `documents`
+   * **Public access level:** **Private**
+
+After this, you should have:
+
+* ✅ `backup`
+* ✅ `documents`
+
+### Step 3: Upload the files
+
+#### Upload a PDF
+
+1. Open the **documents** container.
+2. Click **Upload**.
+3. Select any **PDF** file from your computer.
+4. Click **Upload**.
+
+#### Upload an Image
+
+1. Open the **backup** container.
+2. Click **Upload**.
+3. Select any image (`.jpg`, `.png`, etc.).
+4. Click **Upload**.
+
+> The assignment only says:
+>
+> * Upload **one PDF file**
+> * Upload **one Image**
+>
+> It doesn't specify which container each file must go into, so you can also upload **both files into the same container** if you prefer. However, to demonstrate both containers are working, it's a good practice to upload the **PDF to `documents`** and the **image to `backup`**.
+
+### Final Result
+
+| Container   | File              |
+| ----------- | ----------------- |
+| `backup`    | Image (.jpg/.png) |
+| `documents` | PDF (.pdf)        |
+
+This will satisfy all the requirements for **Task 4**.
+
+
+
+https://nikhilstorage086.blob.core.windows.net/documents/Assignment%20Guidelines_Cloud%20Adminstrator_AZ-104.docx?sp=rcw&st=2026-08-02T12:48:41Z&se=2026-08-02T21:03:41Z&spr=https&sv=2026-02-06&sr=b&sig=hbFrGUU7l7Vo7EhNTwozPb4gEHt5%2FHea9NDWUGnuNFI%3D
+
+https://nikhilstorage086.blob.core.windows.net/documents/Assignment%20Guidelines_Cloud%20Adminstrator_AZ-104.docx?sp=rw&st=2026-08-02T12:48:41Z&se=2026-08-02T21:03:41Z&spr=https&sv=2026-02-06&sr=b&sig=2bIwBVUbzlw74LsDNGHBrSxK4nOnJKW%2F2JHf2T93QcI%3D
+ 
+ 
+https://nikhilstorage086.blob.core.windows.net/documents/Assignment%20Guidelines_Cloud%20Adminstrator_AZ-104.docx?sp=r&st=2026-08-02T12:48:41Z&se=2026-08-02T21:03:41Z&spr=https&sv=2026-02-06&sr=b&sig=5jSl3s2ma8933TGb8zRU3UlqMXeV7tJNsVU4EQk3zi8%3D
+
+
+
+sp=rcw&st=2026-08-02T13:02:33Z&se=2026-08-02T21:17:33Z&spr=https&sv=2026-02-06&sr=b&sig=HU8%2Bq6nvj0o%2B%2Bq3wa9SMWu5t3MET8TligdVxf2UbJuw%3D
+
+
+https://nikhilstorage086.blob.core.windows.net/documents/SAS_TEST.odt?sp=rcw&st=2026-08-02T13:02:33Z&se=2026-08-02T21:17:33Z&spr=https&sv=2026-02-06&sr=b&sig=HU8%2Bq6nvj0o%2B%2Bq3wa9SMWu5t3MET8TligdVxf2UbJuw%3D

@@ -1,0 +1,8 @@
+AlertId,IncidentId,Timestamp,Title,Severity,Category,ServiceSource,DetectionSource,Status
+da3f1a20-e001,INC-4471,2026-07-20T09:23:10Z,"Suspicious PowerShell download from a known malicious IP",High,CommandAndControl,MicrosoftDefenderForEndpoint,EDR,New
+da3f1a20-e002,INC-4471,2026-07-20T09:14:40Z,"Phishing email delivered from spoofed IT support domain",Medium,InitialAccess,MicrosoftDefenderForOffice365,ATP-Email,New
+da3f1a20-e003,INC-4471,2026-07-20T10:47:20Z,"LSASS memory access via rundll32 (possible credential dumping)",High,CredentialAccess,MicrosoftDefenderForEndpoint,EDR,New
+da3f1a20-e004,INC-4471,2026-07-20T11:10:35Z,"Lateral movement to finance server using service account",High,LateralMovement,MicrosoftDefenderForIdentity,Identity,New
+da3f1a20-e005,INC-4471,2026-07-21T02:14:20Z,"Impossible travel sign-in detected for privileged account",High,InitialAccess,AzureActiveDirectoryIdentityProtection,IdentityProtection,New
+da3f1a20-e006,INC-4471,2026-07-21T02:31:15Z,"Unusual volume of file downloads from Finance SharePoint site",Medium,Exfiltration,MicrosoftDefenderForCloudApps,CloudAppSecurity,New
+da3f1a20-e007,INC-4471,2026-07-21T03:05:40Z,"File uploaded to unsanctioned cloud storage domain",High,Exfiltration,MicrosoftDefenderForCloudApps,CloudAppSecurity,New

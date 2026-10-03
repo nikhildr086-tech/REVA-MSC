@@ -1,0 +1,148 @@
+# KQL Reference & Detection Queries — Contoso Retail Capstone
+
+These queries assume the sample CSVs have been ingested as custom tables in your Log
+Analytics workspace with names `SigninLogsCustom_CL`, `FirewallLogsCustom_CL`, and
+`EndpointProcessCustom_CL` (the `_CL` suffix is added automatically by the custom
+logs ingestion pipeline). Adjust column names if the ingestion wizard appends `_s`,
+`_d`, or `_t` type suffixes to your fields.
+
+If you instead enable Sentinel's built-in **Sample Data (Content Hub)** solution,
+use the native table names (`SigninLogs`, `AzureActivity`, `SecurityEvent`, etc.)
+and adapt the column names accordingly — the underlying detection logic is the same.
+
+---
+
+## 1. Data validation (run first)
+
+```kql
+SigninLogsCustom_CL
+| take 20
+```
+
+```kql
+SigninLogsCustom_CL
+| summarize Events = count() by bin(TimeGenerated_t, 1h)
+| render timechart
+```
+
+## 2. Brute-force / password-spray detection
+
+```kql
+SigninLogsCustom_CL
+| where ResultType_d != 0
+| summarize FailedAttempts = count(), Countries = make_set(Country_s)
+    by UserPrincipalName_s, IPAddress_s, bin(TimeGenerated_t, 15m)
+| where FailedAttempts >= 10
+| order by FailedAttempts desc
+```
+
+**MITRE ATT&CK:** T1110 (Brute Force) — Credential Access
+
+## 3. Impossible travel
+
+```kql
+SigninLogsCustom_CL
+| where ResultType_d == 0
+| sort by UserPrincipalName_s asc, TimeGenerated_t asc
+| serialize
+| extend PrevCity = prev(City_s), PrevTime = prev(TimeGenerated_t), PrevUser = prev(UserPrincipalName_s)
+| where UserPrincipalName_s == PrevUser and City_s != PrevCity
+| extend MinutesBetween = datetime_diff('minute', TimeGenerated_t, PrevTime)
+| where MinutesBetween < 60
+| project UserPrincipalName_s, PrevCity, City_s, PrevTime, TimeGenerated_t, MinutesBetween
+```
+
+**MITRE ATT&CK:** T1078 (Valid Accounts) — Initial Access / Persistence
+
+## 4. Off-hours service account interactive sign-in
+
+```kql
+SigninLogsCustom_CL
+| where UserPrincipalName_s startswith "svc-"
+| where ResultType_d == 0
+| extend HourOfDay = datetime_part("hour", TimeGenerated_t)
+| where HourOfDay <= 5 or HourOfDay >= 22
+```
+
+**MITRE ATT&CK:** T1078.004 (Valid Accounts: Cloud Accounts)
+
+## 5. Internal port scan detection
+
+```kql
+FirewallLogsCustom_CL
+| where Action_s == "Deny"
+| summarize DistinctPorts = dcount(DestinationPort_d), DistinctTargets = dcount(DestinationIP_s)
+    by SourceIP_s, bin(TimeGenerated_t, 5m)
+| where DistinctPorts > 20
+| order by DistinctPorts desc
+```
+
+**MITRE ATT&CK:** T1046 (Network Service Discovery)
+
+## 6. Possible C2 beaconing (regular interval connections)
+
+```kql
+FirewallLogsCustom_CL
+| where Action_s == "Allow"
+| sort by SourceIP_s asc, TimeGenerated_t asc
+| serialize
+| extend PrevTime = prev(TimeGenerated_t), PrevSrc = prev(SourceIP_s), PrevDst = prev(DestinationIP_s)
+| where SourceIP_s == PrevSrc and DestinationIP_s == PrevDst
+| extend GapSeconds = datetime_diff('second', TimeGenerated_t, PrevTime)
+| summarize Connections = count(), AvgGap = avg(GapSeconds), StdevGap = stdev(GapSeconds)
+    by SourceIP_s, DestinationIP_s
+| where Connections >= 20 and StdevGap < 10
+```
+
+**MITRE ATT&CK:** T1071 (Application Layer Protocol) — Command and Control
+
+## 7. Encoded PowerShell execution
+
+```kql
+EndpointProcessCustom_CL
+| where ProcessName_s =~ "powershell.exe"
+| where CommandLine_s has_any ("-enc", "-EncodedCommand", "-e ", "-W Hidden", "-NonI")
+| project TimeGenerated_t, Computer_s, AccountName_s, CommandLine_s, ParentProcessName_s
+```
+
+**MITRE ATT&CK:** T1059.001 (PowerShell) / T1027 (Obfuscated Files or Information)
+
+## 8. Office application spawning a shell (living-off-the-land)
+
+```kql
+EndpointProcessCustom_CL
+| where ParentProcessName_s in ("winword.exe", "excel.exe", "outlook.exe")
+| where ProcessName_s in ("powershell.exe", "cmd.exe", "wscript.exe", "mshta.exe", "rundll32.exe")
+```
+
+**MITRE ATT&CK:** T1204.002 (User Execution: Malicious File) → T1059
+
+## 9. Full attack-chain correlation (stretch goal)
+
+Join the encoded-PowerShell finding with the impossible-travel finding to see if the
+same user/host shows up in both the identity and endpoint kill chains within the
+same 24-hour window — this is the kind of correlation an analyst would build into a
+Sentinel **hunting query** or a **fusion-style analytics rule**.
+
+```kql
+let riskyLogons = SigninLogsCustom_CL
+    | where ResultType_d == 0
+    | project TimeGenerated_t, UserPrincipalName_s;
+let riskyProcs = EndpointProcessCustom_CL
+    | where CommandLine_s has "-enc"
+    | project TimeGenerated_t, AccountName_s;
+riskyLogons
+| join kind=inner (riskyProcs) on $left.UserPrincipalName_s has $right.AccountName_s
+| where abs(datetime_diff('hour', TimeGenerated_t, TimeGenerated_t1)) < 24
+```
+
+---
+
+## Notes for students
+
+- Every query above is a starting point, not a final answer — tune thresholds,
+  add `AccountName_s !endswith "svc-"` exclusions, etc., and explain your reasoning
+  in your incident report.
+- When you convert a query into a **Scheduled Analytics Rule** in Sentinel, set:
+  entity mappings (Account, IP, Host), MITRE ATT&CK tactic/technique tags,
+  alert grouping, and a sensible run frequency / lookback period.
